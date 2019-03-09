@@ -1,0 +1,47 @@
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()">
+  <ng-template #modalTitle>
+    Custom Modal Title
+  </ng-template>
+
+  <ng-template #modalContent>
+    <div *ngIf="controlArray">
+      <nz-table [nzData]="controlArray">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of controlArray;let i = index;">
+            <td>
+              <input type="text" nz-input [(ngModel)]="data.name"
+                [ngClass]="{'inValid': inValidObj.key == i && inValidObj.value == 'name'}" (keyup)="onKeyUp(i,'name')">
+            </td>
+            <td>
+              <input type="text" nz-input [(ngModel)]="data.sex"
+                [ngClass]="{'inValid': inValidObj.key == i && inValidObj.value == 'sex'}" (keyup)="onKeyUp(i,'sex')">
+            </td>
+            <td>
+              <input type="text" nz-input [(ngModel)]="data.age"
+                [ngClass]="{'inValid': inValidObj.key == i && inValidObj.value == 'age'}" (keyup)="onKeyUp(i,'age')">
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <button nz-button type="primary" (click)="onAdd()">add</button>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <span>Modal Footer: </span>
+    <button nz-button nzType="default" (click)="handleCancel(true)">Custom Callback</button>
+    <button nz-button nzType="primary" (click)="handleCancel(true)" [nzLoading]="isConfirmLoading">Custom
+      Submit</button>
+  </ng-template>
+</nz-modal>

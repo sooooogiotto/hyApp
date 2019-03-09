@@ -1,0 +1,26 @@
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.dynamic-delete-button:hover {
+  color: #777;
+}
+
+[nz-form] {
+  max-width: 600px;
+}
+
+.inValid {
+  border-color: #f5222d;
+  outline: 0;
+}
+.inValid:focus {
+  border-color: #f5222d;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(245, 34, 45, 0.2);
+}
